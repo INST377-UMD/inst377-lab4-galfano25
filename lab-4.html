@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+        <style>
+            body {
+                background-color:chartreuse;
+            }
+
+            .section {
+                background-color:black;
+                color: white;
+                padding: 20px;
+                border: 1px dashed white;
+                text-align: center;
+                margin: 10px;
+            }
+
+            .body {
+                width: 100%;
+            } 
+
+            .leftSide{
+                float: left;
+                width: 50%;
+            }
+
+            .rightSide {
+                float: right;
+                width: 50%;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <h1 id="heading">INST377 - Lab 4</h1>
+        <div class="body">
+            <div class="leftSide">
+            <!--alert me-->
+            <div class="section">
+            <form name="alerts" onsubmit=alertMe()>
+                <label for="alertName">Name: </label>
+                <input type="text" name="alertName" required>
+                <input type="submit" value="Alert Me!">
+            </form>
+            <script type="text/javascript">
+                function alertMe() {
+                    alert('Hi '+ document.alerts.alertName.value)
+                }
+            </script>
+            </div>
+
+            <!--text tester-->
+            <div class="section">
+            <form name="textValid" onsubmit="return(formValidation())">
+                <label for="textTester">Text Tester: </label>
+                <input type="text" name="textTester" required>
+                <input type="submit" value="Validate Text">
+            </form>
+            <script type="text/javascript">
+                function formValidation(){
+                    var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                    if (validation.test(document.textValid.textTester.value)) {
+                        alert('No special characters');
+                        return false;
+                    }
+                    return true;
+                }
+            </script>
+            </div>
+        </div>
+        <div class="rightSide">
+            <!--change color-->
+            <div class="section">
+                <button onclick="changeColor()">Change Color</button>
+                <script type="text/javascript">
+                    function changeColor () {
+                        if(document.body.style.backgroundColor =='chartreuse'){
+                            const t = document.body.style.backgroundColor ='blue';
+                        } else{
+                        const t = document.body.style.backgroundColor ='chartreuse';
+                        }
+                        console.log('Element is: ', t)
+                    }
+                    </script>
+            </div>
+            <!--add text-->
+            <div class="section">
+                <button onclick="addText()">Add Text</button>
+                <script type="text/javascript">
+                    function addText () {
+                        if(document.getElementById('heading').textContent =='INST377 - Lab 4'){
+                            const t = document.getElementById('heading').textContent += " - Adding Text";
+                        } 
+                        console.log('Element is: ', t)
+                    }
+                    </script>
+            </div>
+            </div>
+        </div>
+    </body>
+</html>
